@@ -247,9 +247,7 @@
     }
     .hero-cta:hover { background: #a01f14; }
 
-    .hero-image-wrap {
-      position: relative;
-    }
+    .hero-image-wrap { position: relative; }
 
     .hero-image-wrap img {
       width: 100%;
@@ -269,18 +267,10 @@
       z-index: -1;
     }
 
-    .hero-divider {
-      border: none;
-      border-top: var(--rule);
-      margin: 0;
-    }
-
     /* ── ABOUT ───────────────────────────────────────────────── */
-    #about { }
-
     .about-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 3fr 2fr;
       gap: 80px;
       align-items: start;
     }
@@ -288,18 +278,26 @@
     .about-bio {
       font-size: 17px;
       font-weight: 300;
-      line-height: 1.8;
+      line-height: 1.85;
       color: var(--ink);
     }
 
-    .about-bio strong {
-      font-weight: 600;
+    .about-bio p + p { margin-top: 22px; }
+    .about-bio strong { font-weight: 600; }
+
+    .about-bio .interests {
+      font-size: 15px;
+      color: #444;
+      border-left: 3px solid var(--blue);
+      padding-left: 20px;
+      margin-top: 28px;
+      line-height: 1.75;
     }
 
     .about-stats {
       display: flex;
       flex-direction: column;
-      gap: 24px;
+      gap: 20px;
     }
 
     .stat-box {
@@ -327,9 +325,7 @@
     }
 
     /* ── EXPERIENCE ──────────────────────────────────────────── */
-    #experience { }
-
-    .exp-item { padding: 48px 0; }
+    .exp-item { padding: 44px 0; }
     .exp-item:first-child { padding-top: 0; }
 
     .exp-divider {
@@ -348,7 +344,7 @@
 
     .exp-company {
       font-family: var(--font-serif);
-      font-size: 28px;
+      font-size: 26px;
       font-weight: 700;
       color: var(--ink);
       line-height: 1.15;
@@ -369,7 +365,7 @@
       letter-spacing: 0.15em;
       text-transform: uppercase;
       color: var(--red);
-      margin-bottom: 20px;
+      margin-bottom: 16px;
     }
 
     .exp-bullets {
@@ -385,6 +381,7 @@
       color: var(--ink);
       padding-left: 20px;
       position: relative;
+      line-height: 1.65;
     }
 
     .exp-bullets li::before {
@@ -395,16 +392,100 @@
       font-weight: 400;
     }
 
-    /* ── EDUCATION ───────────────────────────────────────────── */
-    #education { }
+    /* ── BACARDÍ SHOWCASE ────────────────────────────────────── */
+    #bacardi-showcase {
+      max-width: 100%;
+      padding: 80px 0;
+      background: rgba(138, 155, 173, 0.07);
+      border-top: var(--rule);
+      border-bottom: var(--rule);
+    }
 
+    .showcase-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+
+    .showcase-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 48px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .showcase-title {
+      font-family: var(--font-serif);
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .showcase-title span { color: var(--red); }
+
+    .showcase-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--blue);
+    }
+
+    /* PDF Embed */
+    .pdf-embed-wrap {
+      position: relative;
+      width: 100%;
+      background: var(--ink);
+      border-top: 3px solid var(--red);
+    }
+
+    .pdf-embed-wrap iframe {
+      display: block;
+      width: 100%;
+      height: 680px;
+      border: none;
+    }
+
+    .pdf-embed-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 0 0;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .pdf-embed-note {
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--blue);
+      letter-spacing: 0.05em;
+    }
+
+    .pdf-open-link {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--red);
+      border-bottom: 1px solid var(--red);
+      padding-bottom: 2px;
+      transition: opacity 0.2s;
+    }
+    .pdf-open-link:hover { opacity: 0.65; }
+
+    @media (max-width: 900px) {
+      .pdf-embed-wrap iframe { height: 420px; }
+    }
+
+    /* ── EDUCATION ───────────────────────────────────────────── */
     .edu-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 64px;
     }
-
-    .edu-item { }
 
     .edu-school {
       font-family: var(--font-serif);
@@ -450,8 +531,6 @@
     }
 
     /* ── SKILLS ──────────────────────────────────────────────── */
-    #skills { }
-
     .skills-grid {
       display: flex;
       flex-wrap: wrap;
@@ -468,45 +547,9 @@
       padding: 10px 20px;
       transition: background 0.2s, color 0.2s;
     }
-    .skill-chip:hover {
-      background: var(--blue);
-      color: var(--cream);
-    }
-
-    /* ── LEADERSHIP ──────────────────────────────────────────── */
-    #leadership { }
-
-    .leadership-row {
-      border-left: 3px solid var(--blue);
-      padding: 20px 28px;
-      margin-bottom: 16px;
-      background: rgba(138, 155, 173, 0.06);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 24px;
-      flex-wrap: wrap;
-    }
-
-    .leadership-org {
-      font-family: var(--font-serif);
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--ink);
-    }
-
-    .leadership-dates {
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      color: var(--blue);
-      white-space: nowrap;
-      flex-shrink: 0;
-    }
+    .skill-chip:hover { background: var(--blue); color: var(--cream); }
 
     /* ── CONTACT ─────────────────────────────────────────────── */
-    #contact { }
-
     .contact-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -610,7 +653,6 @@
       letter-spacing: 0.05em;
     }
 
-    /* ── Full-width dividers ─────────────────────────────────── */
     .full-rule {
       border: none;
       border-top: var(--rule);
@@ -631,9 +673,7 @@
       }
 
       .hero-text { padding-right: 0; }
-
       .hero-image-wrap { max-width: 340px; }
-
       .hero-name { font-size: clamp(44px, 10vw, 72px); }
 
       section { padding: 64px 24px; }
@@ -643,11 +683,12 @@
       .stat-box { flex: 1 1 160px; }
 
       .edu-grid { grid-template-columns: 1fr; gap: 40px; }
-
       .contact-grid { grid-template-columns: 1fr; gap: 48px; }
 
       .exp-header { flex-direction: column; gap: 4px; }
       .exp-dates { align-self: flex-start; }
+
+      .showcase-inner { padding: 0 24px; }
 
       footer { padding: 24px; flex-direction: column; align-items: flex-start; gap: 8px; }
     }
@@ -656,6 +697,7 @@
       .hero-name { font-size: clamp(36px, 11vw, 56px); }
       .stat-box { flex: 1 1 100%; }
       .about-stats { flex-direction: column; }
+      .showcase-title { font-size: 26px; }
     }
   </style>
 </head>
@@ -682,7 +724,6 @@
     <a href="#experience" class="mobile-link">Experience</a>
     <a href="#education" class="mobile-link">Education</a>
     <a href="#skills" class="mobile-link">Skills</a>
-    <a href="#leadership" class="mobile-link">Leadership</a>
     <a href="#contact" class="mobile-link">Contact</a>
     <a class="nav-resume" href="Kenton Banks Harrison Resume .pdf" download>Resume ↓</a>
   </div>
@@ -704,7 +745,7 @@
     </div>
   </section>
 
-  <hr class="full-rule hero-divider" />
+  <hr class="full-rule" />
 
   <!-- ── ABOUT ──────────────────────────────────────────────── -->
   <section id="about">
@@ -715,18 +756,19 @@
     <div class="about-grid">
       <div class="about-bio reveal" style="transition-delay:0.1s">
         <p>
-          Tulane University senior at the <strong>A.B. Freeman School of Business</strong>, majoring in Marketing &amp; Management with a <strong>3.72 GPA</strong>. Honors student and Tulane Merit Award recipient. Studied abroad at ICADE Business School in Madrid, Spain.
+          A senior at Tulane University's Freeman School of Business, studying Marketing and Management with a focus on how brands tell stories that actually land. My work has spanned <strong>experiential activations, influencer strategy, branded content, and consumer research</strong> — all oriented around one question: how do you make people genuinely connect with a product or idea?
         </p>
-        <br />
         <p>
-          Passionate about <strong>brand strategy, cultural marketing, and consumer insights</strong> — the craft of making people feel something about a product or idea. Originally from Saint Simons Island, GA, now based in New Orleans.
+          Last summer, I joined the <strong>Bacardí Rum Brand Team in Miami</strong>, where I built an influencer-driven 360° marketing program targeting Gen Z in casual dining environments, helped bring the brand to life at Lollapalooza and other key activations, and collaborated across creative, insights, and partnerships teams on campaigns with real stakes.
+        </p>
+        <p>
+          I'm comfortable across tools like <strong>NielsenIQ, RStudio, Excel, and Canva</strong>, and equally at home in the content creation space — from Instagram strategy to short-form video. I move naturally between the analytical and the creative, and I hold myself to a high standard of quality in everything I put my name on.
+        </p>
+        <p class="interests">
+          Outside of work, I'm drawn to the things that quietly shape culture — finding a restaurant that shifts how you think about food, stumbling onto an album before anyone else does, watching a film that stays with you for days. I stay close to what's moving in music, fashion, food, and film, and I think that curiosity is a big part of what makes me good at this work.
         </p>
       </div>
       <div class="about-stats reveal" style="transition-delay:0.2s">
-        <div class="stat-box">
-          <span class="stat-number">3.72</span>
-          <span class="stat-label">GPA</span>
-        </div>
         <div class="stat-box">
           <span class="stat-number">4+</span>
           <span class="stat-label">Years Experience</span>
@@ -748,38 +790,35 @@
       <hr class="section-rule" />
     </div>
 
-    <!-- Role 1 -->
     <div class="exp-item reveal" style="transition-delay:0.05s">
       <div class="exp-header">
         <span class="exp-company">The Curation Society</span>
         <span class="exp-dates">Feb 2026 – May 2026</span>
       </div>
-      <p class="exp-role">Marketing &amp; Brand Partnerships Intern &nbsp;·&nbsp; Remote</p>
+      <p class="exp-role">Brand Partnerships Intern &nbsp;·&nbsp; Remote</p>
       <ul class="exp-bullets">
-        <li>Identified and initiated brand partnership opportunities, aligning talent and brand objectives</li>
-        <li>Supported campaign proposal development through partner research and trend analysis</li>
+        <li>Sourced and developed brand partnership opportunities by mapping talent audiences against brand objectives and cultural fit</li>
+        <li>Contributed to pitch and campaign proposal development through competitor research and trend analysis</li>
       </ul>
     </div>
 
     <hr class="exp-divider" />
 
-    <!-- Role 2 -->
     <div class="exp-item reveal" style="transition-delay:0.1s">
       <div class="exp-header">
         <span class="exp-company">Bacardí</span>
         <span class="exp-dates">June 2025 – Aug 2025</span>
       </div>
-      <p class="exp-role">Marketing Intern &nbsp;·&nbsp; Bacardi Limited</p>
+      <p class="exp-role">Marketing Intern &nbsp;·&nbsp; Bacardi Limited &nbsp;·&nbsp; Miami, FL</p>
       <ul class="exp-bullets">
-        <li>Developed 360 marketing strategy targeting new consumer growth opportunities in key markets</li>
-        <li>Coordinated brand activations at Soho House Chicago and Casa Bacardí at Lollapalooza</li>
-        <li>Conducted performance analysis using NielsenIQ and partnered with insights experts</li>
+        <li>Designed a Gen Z-focused influencer marketing program for Bacardí Rum — from strategic framework through channel execution across casual dining environments</li>
+        <li>Supported on-premise activations at Lollapalooza and Soho House Chicago, working across creative, brand, and partnerships teams on live execution</li>
+        <li>Used NielsenIQ and cross-functional collaboration with insights experts to track performance and refine campaign approach</li>
       </ul>
     </div>
 
     <hr class="exp-divider" />
 
-    <!-- Role 3 -->
     <div class="exp-item reveal" style="transition-delay:0.15s">
       <div class="exp-header">
         <span class="exp-company">Frederica Realty</span>
@@ -787,14 +826,13 @@
       </div>
       <p class="exp-role">Social Media Marketing Intern</p>
       <ul class="exp-bullets">
-        <li>Developed and executed digital content strategies across Facebook and Instagram</li>
-        <li>Conducted performance analysis using key marketing metrics</li>
+        <li>Managed and refreshed the brand's digital presence across Facebook and Instagram, building a more consistent content calendar and visual voice</li>
+        <li>Tracked key engagement metrics to guide ongoing content decisions and report on channel performance</li>
       </ul>
     </div>
 
     <hr class="exp-divider" />
 
-    <!-- Role 4 -->
     <div class="exp-item reveal" style="transition-delay:0.2s">
       <div class="exp-header">
         <span class="exp-company">Meo's Suite</span>
@@ -802,11 +840,36 @@
       </div>
       <p class="exp-role">Social Media &amp; Website Manager</p>
       <ul class="exp-bullets">
-        <li>Designed targeted social media campaigns to drive engagement and increase sales</li>
-        <li>Leveraged consumer insights and analytics to refine content strategy and sustain growth</li>
+        <li>Oversees social strategy and website management for the brand, blending trend-informed content with audience data to sustain growth</li>
+        <li>Developed targeted campaigns that consistently drove measurable increases in engagement and sales activity</li>
       </ul>
     </div>
   </section>
+
+  <!-- ── BACARDÍ SHOWCASE ────────────────────────────────────── -->
+  <div id="bacardi-showcase">
+    <div class="showcase-inner">
+      <div class="showcase-header reveal">
+        <div>
+          <p class="showcase-label">Featured Work</p>
+          <h2 class="showcase-title"><span>Bacardí</span> — Summer 2025</h2>
+        </div>
+        <p class="showcase-label" style="align-self:flex-end">Internship Presentation</p>
+      </div>
+
+      <div class="pdf-embed-wrap reveal" style="transition-delay:0.1s">
+        <iframe
+          src="Bacardi Intern Presentation.pdf"
+          title="Bacardí Internship Presentation — Summer 2025"
+          loading="lazy"
+        ></iframe>
+      </div>
+      <div class="pdf-embed-footer reveal" style="transition-delay:0.15s">
+        <span class="pdf-embed-note">Bacardí Brand Team · Miami, FL · Summer 2025</span>
+        <a class="pdf-open-link" href="Bacardi Intern Presentation.pdf" target="_blank" rel="noopener">Open Full Screen ↗</a>
+      </div>
+    </div>
+  </div>
 
   <hr class="full-rule" />
 
@@ -817,7 +880,7 @@
       <hr class="section-rule" />
     </div>
     <div class="edu-grid">
-      <div class="edu-item reveal" style="transition-delay:0.1s">
+      <div class="reveal" style="transition-delay:0.1s">
         <p class="edu-school">Tulane University</p>
         <p class="edu-sub">A.B. Freeman School of Business</p>
         <p class="edu-detail">
@@ -829,7 +892,7 @@
           <span class="edu-badge">Merit Award Recipient</span>
         </div>
       </div>
-      <div class="edu-item reveal" style="transition-delay:0.2s">
+      <div class="reveal" style="transition-delay:0.2s">
         <p class="edu-school">ICADE Business School</p>
         <p class="edu-sub">Madrid, Spain</p>
         <p class="edu-detail">
@@ -850,39 +913,18 @@
     </div>
     <div class="skills-grid reveal" style="transition-delay:0.1s">
       <span class="skill-chip">NielsenIQ</span>
+      <span class="skill-chip">RStudio</span>
       <span class="skill-chip">Google Suite</span>
       <span class="skill-chip">Microsoft Office</span>
+      <span class="skill-chip">Excel (Certified)</span>
       <span class="skill-chip">Canva</span>
       <span class="skill-chip">Video Editing</span>
-      <span class="skill-chip">Social Media Marketing</span>
+      <span class="skill-chip">Instagram</span>
+      <span class="skill-chip">TikTok</span>
+      <span class="skill-chip">Social Media Strategy</span>
       <span class="skill-chip">Content Creation</span>
       <span class="skill-chip">Project Management</span>
-      <span class="skill-chip">Excel (Certified)</span>
       <span class="skill-chip">Spanish (Basic)</span>
-    </div>
-  </section>
-
-  <hr class="full-rule" />
-
-  <!-- ── LEADERSHIP ─────────────────────────────────────────── -->
-  <section id="leadership">
-    <div class="reveal">
-      <p class="section-label">Leadership</p>
-      <hr class="section-rule" />
-    </div>
-    <div class="reveal" style="transition-delay:0.1s">
-      <div class="leadership-row">
-        <span class="leadership-org">Phi Chi Theta Business Fraternity — Tulane Branch</span>
-        <span class="leadership-dates">Jan 2024 – May 2026</span>
-      </div>
-      <div class="leadership-row">
-        <span class="leadership-org">Tulane American Marketing Association</span>
-        <span class="leadership-dates">Jan 2023 – May 2026</span>
-      </div>
-      <div class="leadership-row">
-        <span class="leadership-org">Strong City Tulane — Community Service</span>
-        <span class="leadership-dates">Aug 2023 – May 2026</span>
-      </div>
     </div>
   </section>
 
@@ -955,7 +997,6 @@
       hamburger.setAttribute('aria-expanded', open);
     });
 
-    // Close mobile menu on link click
     document.querySelectorAll('.mobile-link, .mobile-menu .nav-resume').forEach(link => {
       link.addEventListener('click', () => {
         mobileMenu.classList.remove('open');
@@ -963,6 +1004,7 @@
         hamburger.setAttribute('aria-expanded', 'false');
       });
     });
+
   </script>
 </body>
 </html>
