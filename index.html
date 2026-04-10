@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Banks Harrison — Marketing & Brand Strategy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── Reset & Base ────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:    #F2EDE4;
+      --red:      #C8281A;
+      --blue:     #8A9BAD;
+      --ink:      #1A1A1A;
+      --rule:     1px solid #C8281A;
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-sans:  'Inter', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: var(--font-sans);
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    /* ── Scroll-in animation ─────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── NAV ─────────────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: var(--cream);
+      border-bottom: var(--rule);
+      height: 60px;
+      display: flex;
+      align-items: center;
+      padding: 0 48px;
+    }
+
+    .nav-brand {
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: var(--red);
+      text-transform: uppercase;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+      margin: 0 auto;
+    }
+
+    .nav-links a {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--blue); }
+
+    .nav-resume {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--red);
+      border: 1px solid var(--red);
+      padding: 7px 18px;
+      transition: background 0.2s, color 0.2s;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .nav-resume:hover { background: var(--red); color: var(--cream); }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      margin-left: auto;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--ink);
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 60px; left: 0; right: 0;
+      background: var(--cream);
+      border-bottom: var(--rule);
+      z-index: 99;
+      padding: 24px 48px;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink);
+      transition: color 0.2s;
+    }
+    .mobile-menu a:hover { color: var(--blue); }
+    .mobile-menu .nav-resume {
+      display: inline-block;
+      align-self: flex-start;
+    }
+
+    /* ── Shared Section Styles ───────────────────────────────── */
+    section {
+      padding: 100px 48px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-rule {
+      border: none;
+      border-top: var(--rule);
+      margin-bottom: 64px;
+    }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 14px;
+    }
+
+    /* ── HERO ────────────────────────────────────────────────── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 60px;
+      max-width: 100%;
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .hero-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 0 48px;
+      display: grid;
+      grid-template-columns: 1fr 440px;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .hero-text { padding-right: 24px; }
+
+    .hero-kicker {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin-bottom: 28px;
+    }
+
+    .hero-name {
+      font-family: var(--font-serif);
+      font-size: clamp(52px, 6vw, 96px);
+      font-weight: 900;
+      line-height: 1.0;
+      color: var(--red);
+      margin-bottom: 28px;
+      letter-spacing: -0.01em;
+    }
+
+    .hero-tagline {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin-bottom: 32px;
+    }
+
+    .hero-sub {
+      font-size: 17px;
+      font-weight: 300;
+      color: var(--ink);
+      max-width: 480px;
+      line-height: 1.7;
+      margin-bottom: 48px;
+    }
+
+    .hero-cta {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--cream);
+      background: var(--red);
+      padding: 14px 32px;
+      transition: background 0.2s;
+    }
+    .hero-cta:hover { background: #a01f14; }
+
+    .hero-image-wrap {
+      position: relative;
+    }
+
+    .hero-image-wrap img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+
+    .hero-image-accent {
+      position: absolute;
+      bottom: -16px;
+      left: -16px;
+      width: 60%;
+      height: 60%;
+      border: 1px solid var(--blue);
+      z-index: -1;
+    }
+
+    .hero-divider {
+      border: none;
+      border-top: var(--rule);
+      margin: 0;
+    }
+
+    /* ── ABOUT ───────────────────────────────────────────────── */
+    #about { }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .about-bio {
+      font-size: 17px;
+      font-weight: 300;
+      line-height: 1.8;
+      color: var(--ink);
+    }
+
+    .about-bio strong {
+      font-weight: 600;
+    }
+
+    .about-stats {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .stat-box {
+      border: 1px solid var(--blue);
+      padding: 28px 32px;
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+    }
+
+    .stat-number {
+      font-family: var(--font-serif);
+      font-size: 48px;
+      font-weight: 700;
+      color: var(--red);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+
+    /* ── EXPERIENCE ──────────────────────────────────────────── */
+    #experience { }
+
+    .exp-item { padding: 48px 0; }
+    .exp-item:first-child { padding-top: 0; }
+
+    .exp-divider {
+      border: none;
+      border-top: var(--rule);
+    }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 24px;
+      margin-bottom: 6px;
+      flex-wrap: wrap;
+    }
+
+    .exp-company {
+      font-family: var(--font-serif);
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.15;
+    }
+
+    .exp-dates {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      color: var(--blue);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .exp-role {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 20px;
+    }
+
+    .exp-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .exp-bullets li {
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--ink);
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .exp-bullets li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--red);
+      font-weight: 400;
+    }
+
+    /* ── EDUCATION ───────────────────────────────────────────── */
+    #education { }
+
+    .edu-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+    }
+
+    .edu-item { }
+
+    .edu-school {
+      font-family: var(--font-serif);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+
+    .edu-sub {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 14px;
+    }
+
+    .edu-detail {
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--ink);
+      line-height: 1.7;
+    }
+
+    .edu-detail strong { font-weight: 600; }
+
+    .edu-honors {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .edu-badge {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--blue);
+      border: 1px solid var(--blue);
+      padding: 4px 12px;
+    }
+
+    /* ── SKILLS ──────────────────────────────────────────────── */
+    #skills { }
+
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .skill-chip {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--blue);
+      border: 1px solid var(--blue);
+      padding: 10px 20px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .skill-chip:hover {
+      background: var(--blue);
+      color: var(--cream);
+    }
+
+    /* ── LEADERSHIP ──────────────────────────────────────────── */
+    #leadership { }
+
+    .leadership-row {
+      border-left: 3px solid var(--blue);
+      padding: 20px 28px;
+      margin-bottom: 16px;
+      background: rgba(138, 155, 173, 0.06);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .leadership-org {
+      font-family: var(--font-serif);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .leadership-dates {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      color: var(--blue);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    /* ── CONTACT ─────────────────────────────────────────────── */
+    #contact { }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .contact-intro {
+      font-size: 28px;
+      font-family: var(--font-serif);
+      font-weight: 700;
+      line-height: 1.3;
+      color: var(--ink);
+      margin-bottom: 36px;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .contact-link-item {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+    }
+
+    .contact-link-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--blue);
+      width: 72px;
+      flex-shrink: 0;
+    }
+
+    .contact-link-value {
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--red);
+      transition: opacity 0.2s;
+    }
+    .contact-link-value:hover { opacity: 0.7; }
+
+    .contact-cta-side {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      padding-top: 8px;
+    }
+
+    .contact-note {
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--ink);
+      line-height: 1.7;
+      margin-bottom: 36px;
+      font-style: italic;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--cream);
+      background: var(--red);
+      padding: 16px 36px;
+      transition: background 0.2s;
+      align-self: flex-start;
+    }
+    .btn-primary:hover { background: #a01f14; }
+
+    /* ── FOOTER ──────────────────────────────────────────────── */
+    footer {
+      border-top: var(--rule);
+      padding: 32px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-brand {
+      font-family: var(--font-serif);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--red);
+    }
+
+    .footer-copy {
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--ink);
+      letter-spacing: 0.05em;
+    }
+
+    /* ── Full-width dividers ─────────────────────────────────── */
+    .full-rule {
+      border: none;
+      border-top: var(--rule);
+    }
+
+    /* ── Responsive ──────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      nav { padding: 0 24px; }
+      .nav-links, .nav-resume { display: none; }
+      .hamburger { display: flex; }
+
+      #hero { padding-left: 0; padding-right: 0; min-height: auto; padding-top: 80px; padding-bottom: 60px; }
+
+      .hero-inner {
+        grid-template-columns: 1fr;
+        padding: 0 24px;
+        gap: 48px;
+      }
+
+      .hero-text { padding-right: 0; }
+
+      .hero-image-wrap { max-width: 340px; }
+
+      .hero-name { font-size: clamp(44px, 10vw, 72px); }
+
+      section { padding: 64px 24px; }
+
+      .about-grid { grid-template-columns: 1fr; gap: 48px; }
+      .about-stats { flex-direction: row; flex-wrap: wrap; }
+      .stat-box { flex: 1 1 160px; }
+
+      .edu-grid { grid-template-columns: 1fr; gap: 40px; }
+
+      .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+
+      .exp-header { flex-direction: column; gap: 4px; }
+      .exp-dates { align-self: flex-start; }
+
+      footer { padding: 24px; flex-direction: column; align-items: flex-start; gap: 8px; }
+    }
+
+    @media (max-width: 600px) {
+      .hero-name { font-size: clamp(36px, 11vw, 56px); }
+      .stat-box { flex: 1 1 100%; }
+      .about-stats { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ───────────────────────────────────────────────── -->
+  <nav>
+    <span class="nav-brand">Banks Harrison</span>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a class="nav-resume" href="Kenton Banks Harrison Resume .pdf" download>Resume ↓</a>
+    <button class="hamburger" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#about" class="mobile-link">About</a>
+    <a href="#experience" class="mobile-link">Experience</a>
+    <a href="#education" class="mobile-link">Education</a>
+    <a href="#skills" class="mobile-link">Skills</a>
+    <a href="#leadership" class="mobile-link">Leadership</a>
+    <a href="#contact" class="mobile-link">Contact</a>
+    <a class="nav-resume" href="Kenton Banks Harrison Resume .pdf" download>Resume ↓</a>
+  </div>
+
+  <!-- ── HERO ───────────────────────────────────────────────── -->
+  <section id="hero">
+    <div class="hero-inner">
+      <div class="hero-text reveal">
+        <p class="hero-kicker">Portfolio</p>
+        <h1 class="hero-name">Kenton<br>"Banks"<br>Harrison</h1>
+        <p class="hero-tagline">Marketing &amp; Brand Strategy &nbsp;·&nbsp; Tulane University '26</p>
+        <p class="hero-sub">Building brands, driving relevance, and creating consumer connections.</p>
+        <a class="hero-cta" href="#contact">Get In Touch</a>
+      </div>
+      <div class="hero-image-wrap reveal" style="transition-delay:0.15s">
+        <img src="IMG_1029.JPG" alt="Kenton Banks Harrison" />
+        <div class="hero-image-accent"></div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="full-rule hero-divider" />
+
+  <!-- ── ABOUT ──────────────────────────────────────────────── -->
+  <section id="about">
+    <div class="reveal">
+      <p class="section-label">About</p>
+      <hr class="section-rule" />
+    </div>
+    <div class="about-grid">
+      <div class="about-bio reveal" style="transition-delay:0.1s">
+        <p>
+          Tulane University senior at the <strong>A.B. Freeman School of Business</strong>, majoring in Marketing &amp; Management with a <strong>3.72 GPA</strong>. Honors student and Tulane Merit Award recipient. Studied abroad at ICADE Business School in Madrid, Spain.
+        </p>
+        <br />
+        <p>
+          Passionate about <strong>brand strategy, cultural marketing, and consumer insights</strong> — the craft of making people feel something about a product or idea. Originally from Saint Simons Island, GA, now based in New Orleans.
+        </p>
+      </div>
+      <div class="about-stats reveal" style="transition-delay:0.2s">
+        <div class="stat-box">
+          <span class="stat-number">3.72</span>
+          <span class="stat-label">GPA</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-number">4+</span>
+          <span class="stat-label">Years Experience</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-number">3</span>
+          <span class="stat-label">Marketing Internships</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="full-rule" />
+
+  <!-- ── EXPERIENCE ─────────────────────────────────────────── -->
+  <section id="experience">
+    <div class="reveal">
+      <p class="section-label">Experience</p>
+      <hr class="section-rule" />
+    </div>
+
+    <!-- Role 1 -->
+    <div class="exp-item reveal" style="transition-delay:0.05s">
+      <div class="exp-header">
+        <span class="exp-company">The Curation Society</span>
+        <span class="exp-dates">Feb 2026 – May 2026</span>
+      </div>
+      <p class="exp-role">Marketing &amp; Brand Partnerships Intern &nbsp;·&nbsp; Remote</p>
+      <ul class="exp-bullets">
+        <li>Identified and initiated brand partnership opportunities, aligning talent and brand objectives</li>
+        <li>Supported campaign proposal development through partner research and trend analysis</li>
+      </ul>
+    </div>
+
+    <hr class="exp-divider" />
+
+    <!-- Role 2 -->
+    <div class="exp-item reveal" style="transition-delay:0.1s">
+      <div class="exp-header">
+        <span class="exp-company">Bacardí</span>
+        <span class="exp-dates">June 2025 – Aug 2025</span>
+      </div>
+      <p class="exp-role">Marketing Intern &nbsp;·&nbsp; Bacardi Limited</p>
+      <ul class="exp-bullets">
+        <li>Developed 360 marketing strategy targeting new consumer growth opportunities in key markets</li>
+        <li>Coordinated brand activations at Soho House Chicago and Casa Bacardí at Lollapalooza</li>
+        <li>Conducted performance analysis using NielsenIQ and partnered with insights experts</li>
+      </ul>
+    </div>
+
+    <hr class="exp-divider" />
+
+    <!-- Role 3 -->
+    <div class="exp-item reveal" style="transition-delay:0.15s">
+      <div class="exp-header">
+        <span class="exp-company">Frederica Realty</span>
+        <span class="exp-dates">May 2024 – Aug 2024</span>
+      </div>
+      <p class="exp-role">Social Media Marketing Intern</p>
+      <ul class="exp-bullets">
+        <li>Developed and executed digital content strategies across Facebook and Instagram</li>
+        <li>Conducted performance analysis using key marketing metrics</li>
+      </ul>
+    </div>
+
+    <hr class="exp-divider" />
+
+    <!-- Role 4 -->
+    <div class="exp-item reveal" style="transition-delay:0.2s">
+      <div class="exp-header">
+        <span class="exp-company">Meo's Suite</span>
+        <span class="exp-dates">May 2023 – Present</span>
+      </div>
+      <p class="exp-role">Social Media &amp; Website Manager</p>
+      <ul class="exp-bullets">
+        <li>Designed targeted social media campaigns to drive engagement and increase sales</li>
+        <li>Leveraged consumer insights and analytics to refine content strategy and sustain growth</li>
+      </ul>
+    </div>
+  </section>
+
+  <hr class="full-rule" />
+
+  <!-- ── EDUCATION ───────────────────────────────────────────── -->
+  <section id="education">
+    <div class="reveal">
+      <p class="section-label">Education</p>
+      <hr class="section-rule" />
+    </div>
+    <div class="edu-grid">
+      <div class="edu-item reveal" style="transition-delay:0.1s">
+        <p class="edu-school">Tulane University</p>
+        <p class="edu-sub">A.B. Freeman School of Business</p>
+        <p class="edu-detail">
+          <strong>B.S. Management</strong> — Marketing &amp; Management<br />
+          GPA: 3.72 &nbsp;·&nbsp; May 2026
+        </p>
+        <div class="edu-honors">
+          <span class="edu-badge">Honors Student</span>
+          <span class="edu-badge">Merit Award Recipient</span>
+        </div>
+      </div>
+      <div class="edu-item reveal" style="transition-delay:0.2s">
+        <p class="edu-school">ICADE Business School</p>
+        <p class="edu-sub">Madrid, Spain</p>
+        <p class="edu-detail">
+          <strong>Semester Abroad</strong> &nbsp;·&nbsp; Aug 2024 – Dec 2024<br />
+          International Marketing · Business Ethics · Operations Management · Leadership &amp; Change
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="full-rule" />
+
+  <!-- ── SKILLS ─────────────────────────────────────────────── -->
+  <section id="skills">
+    <div class="reveal">
+      <p class="section-label">Skills &amp; Proficiencies</p>
+      <hr class="section-rule" />
+    </div>
+    <div class="skills-grid reveal" style="transition-delay:0.1s">
+      <span class="skill-chip">NielsenIQ</span>
+      <span class="skill-chip">Google Suite</span>
+      <span class="skill-chip">Microsoft Office</span>
+      <span class="skill-chip">Canva</span>
+      <span class="skill-chip">Video Editing</span>
+      <span class="skill-chip">Social Media Marketing</span>
+      <span class="skill-chip">Content Creation</span>
+      <span class="skill-chip">Project Management</span>
+      <span class="skill-chip">Excel (Certified)</span>
+      <span class="skill-chip">Spanish (Basic)</span>
+    </div>
+  </section>
+
+  <hr class="full-rule" />
+
+  <!-- ── LEADERSHIP ─────────────────────────────────────────── -->
+  <section id="leadership">
+    <div class="reveal">
+      <p class="section-label">Leadership</p>
+      <hr class="section-rule" />
+    </div>
+    <div class="reveal" style="transition-delay:0.1s">
+      <div class="leadership-row">
+        <span class="leadership-org">Phi Chi Theta Business Fraternity — Tulane Branch</span>
+        <span class="leadership-dates">Jan 2024 – May 2026</span>
+      </div>
+      <div class="leadership-row">
+        <span class="leadership-org">Tulane American Marketing Association</span>
+        <span class="leadership-dates">Jan 2023 – May 2026</span>
+      </div>
+      <div class="leadership-row">
+        <span class="leadership-org">Strong City Tulane — Community Service</span>
+        <span class="leadership-dates">Aug 2023 – May 2026</span>
+      </div>
+    </div>
+  </section>
+
+  <hr class="full-rule" />
+
+  <!-- ── CONTACT ────────────────────────────────────────────── -->
+  <section id="contact">
+    <div class="reveal">
+      <p class="section-label">Get In Touch</p>
+      <hr class="section-rule" />
+    </div>
+    <div class="contact-grid">
+      <div class="reveal" style="transition-delay:0.1s">
+        <p class="contact-intro">Let's build something worth talking about.</p>
+        <div class="contact-links">
+          <div class="contact-link-item">
+            <span class="contact-link-label">Email</span>
+            <a class="contact-link-value" href="mailto:banksharrison2@gmail.com">banksharrison2@gmail.com</a>
+          </div>
+          <div class="contact-link-item">
+            <span class="contact-link-label">Phone</span>
+            <a class="contact-link-value" href="tel:+19127719277">+1 912-771-9277</a>
+          </div>
+          <div class="contact-link-item">
+            <span class="contact-link-label">LinkedIn</span>
+            <a class="contact-link-value" href="https://linkedin.com/in/banksharrison" target="_blank" rel="noopener">linkedin.com/in/banksharrison</a>
+          </div>
+          <div class="contact-link-item">
+            <span class="contact-link-label">Location</span>
+            <span class="contact-link-value" style="color:var(--ink)">New Orleans, LA</span>
+          </div>
+        </div>
+      </div>
+      <div class="contact-cta-side reveal" style="transition-delay:0.2s">
+        <p class="contact-note">"Open to opportunities in brand strategy, marketing, and partnerships."</p>
+        <a class="btn-primary" href="Kenton Banks Harrison Resume .pdf" download>Download Resume ↓</a>
+      </div>
+    </div>
+  </section>
+
+  <hr class="full-rule" />
+
+  <!-- ── FOOTER ─────────────────────────────────────────────── -->
+  <footer>
+    <span class="footer-brand">Banks Harrison</span>
+    <span class="footer-copy">New Orleans, LA &nbsp;·&nbsp; banksharrison2@gmail.com</span>
+  </footer>
+
+  <!-- ── JS ────────────────────────────────────────────────── -->
+  <script>
+    // Scroll-in reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Hamburger menu
+    const hamburger = document.querySelector('.hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', () => {
+      const open = mobileMenu.classList.toggle('open');
+      hamburger.classList.toggle('open', open);
+      hamburger.setAttribute('aria-expanded', open);
+    });
+
+    // Close mobile menu on link click
+    document.querySelectorAll('.mobile-link, .mobile-menu .nav-resume').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('open');
+        hamburger.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+      });
+    });
+  </script>
+</body>
+</html>
