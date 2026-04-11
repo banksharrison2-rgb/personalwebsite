@@ -626,6 +626,130 @@
     }
     .btn-primary:hover { background: #a01f14; }
 
+    /* ── FAVORITES ───────────────────────────────────────────── */
+    #favorites {
+      background: #111110;
+      padding: 100px 0 120px;
+      border-top: var(--rule);
+      border-bottom: var(--rule);
+    }
+
+    .fav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+
+    .fav-header {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 80px;
+    }
+
+    .fav-eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 18px;
+    }
+
+    .fav-title {
+      font-family: var(--font-serif);
+      font-size: clamp(64px, 9vw, 116px);
+      font-weight: 900;
+      color: var(--cream);
+      line-height: 0.88;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+    }
+
+    .fav-subtitle {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--blue);
+    }
+
+    .fav-scatter {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      column-gap: 32px;
+      row-gap: 64px;
+      align-items: start;
+    }
+
+    .fav-item {
+      position: relative;
+      transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), z-index 0s;
+      cursor: default;
+    }
+
+    /* Scatter rotations & vertical offsets */
+    .fav-item:nth-child(1) { transform: rotate(-3deg); }
+    .fav-item:nth-child(2) { transform: rotate(2deg);  margin-top: 48px; }
+    .fav-item:nth-child(3) { transform: rotate(4deg);  margin-top: 12px; }
+    .fav-item:nth-child(4) { transform: rotate(-2deg); margin-top: 72px; }
+    .fav-item:nth-child(5) { transform: rotate(5deg);  margin-top: 24px; }
+    .fav-item:nth-child(6) { transform: rotate(-4deg); margin-top: 40px; }
+    .fav-item:nth-child(7) { transform: rotate(-5deg); margin-top: 56px; }
+    .fav-item:nth-child(8) { transform: rotate(3deg);  margin-top: 16px; }
+
+    .fav-item:hover {
+      transform: rotate(0deg) scale(1.06) !important;
+      z-index: 30;
+      position: relative;
+    }
+
+    .fav-tag {
+      display: inline-block;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 10px;
+    }
+
+    .fav-img-wrap {
+      width: 100%;
+      margin-bottom: 14px;
+      line-height: 0;
+    }
+
+    /* White-bg product shots: mix-blend-mode screen on dark bg
+       makes the white "disappear" into the dark background    */
+    .fav-img-wrap img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: contain;
+    }
+
+    .fav-item.clipart .fav-img-wrap img {
+      mix-blend-mode: screen;
+    }
+
+    .fav-name {
+      font-family: var(--font-serif);
+      font-size: 14px;
+      font-weight: 700;
+      font-style: italic;
+      color: var(--cream);
+      line-height: 1.3;
+      margin-bottom: 5px;
+    }
+
+    .fav-brand {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--blue);
+    }
+
     /* ── FOOTER ──────────────────────────────────────────────── */
     footer {
       border-top: var(--rule);
@@ -689,6 +813,18 @@
       .exp-dates { align-self: flex-start; }
 
       .showcase-inner { padding: 0 24px; }
+      .fav-inner { padding: 0 24px; }
+      .fav-scatter { grid-template-columns: repeat(2, 1fr); column-gap: 20px; row-gap: 48px; }
+      .fav-item:nth-child(even) { margin-top: 32px; }
+      .fav-item:nth-child(odd)  { margin-top: 0; }
+      .fav-item:nth-child(1) { transform: rotate(-2deg); }
+      .fav-item:nth-child(2) { transform: rotate(2deg); }
+      .fav-item:nth-child(3) { transform: rotate(3deg); }
+      .fav-item:nth-child(4) { transform: rotate(-2deg); }
+      .fav-item:nth-child(5) { transform: rotate(4deg); }
+      .fav-item:nth-child(6) { transform: rotate(-3deg); }
+      .fav-item:nth-child(7) { transform: rotate(-4deg); }
+      .fav-item:nth-child(8) { transform: rotate(2deg); }
 
       footer { padding: 24px; flex-direction: column; align-items: flex-start; gap: 8px; }
     }
@@ -698,6 +834,8 @@
       .stat-box { flex: 1 1 100%; }
       .about-stats { flex-direction: column; }
       .showcase-title { font-size: 26px; }
+      .fav-scatter { grid-template-columns: repeat(2, 1fr); }
+      .fav-title { font-size: clamp(52px, 14vw, 80px); }
     }
   </style>
 </head>
@@ -710,6 +848,7 @@
       <li><a href="#about">About</a></li>
       <li><a href="#experience">Experience</a></li>
       <li><a href="#skills">Skills</a></li>
+      <li><a href="#favorites">Favorites</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
     <a class="nav-resume" href="Kenton Banks Harrison Resume .pdf" download>Resume ↓</a>
@@ -724,6 +863,7 @@
     <a href="#experience" class="mobile-link">Experience</a>
     <a href="#education" class="mobile-link">Education</a>
     <a href="#skills" class="mobile-link">Skills</a>
+    <a href="#favorites" class="mobile-link">Favorites</a>
     <a href="#contact" class="mobile-link">Contact</a>
     <a class="nav-resume" href="Kenton Banks Harrison Resume .pdf" download>Resume ↓</a>
   </div>
@@ -927,6 +1067,102 @@
       <span class="skill-chip">Spanish (Basic)</span>
     </div>
   </section>
+
+  <!-- ── FAVORITES ─────────────────────────────────────────── -->
+  <div id="favorites">
+    <div class="fav-inner">
+
+      <div class="fav-header reveal">
+        <span class="fav-eyebrow">Right Now</span>
+        <h2 class="fav-title">Current<br>Favorites</h2>
+        <p class="fav-subtitle">Products &nbsp;·&nbsp; Media &nbsp;·&nbsp; Entertainment</p>
+      </div>
+
+      <div class="fav-scatter">
+
+        <!-- 1. Warby Parker Glasses — white bg → clipart -->
+        <div class="fav-item clipart reveal" style="transition-delay:0.05s">
+          <span class="fav-tag">Wearing</span>
+          <div class="fav-img-wrap">
+            <img src="il_1588xN.7768257134_a7g7.webp" alt="Warby Parker Hardy Glasses" />
+          </div>
+          <p class="fav-name">Hardy Blue Light Glasses</p>
+          <p class="fav-brand">Warby Parker</p>
+        </div>
+
+        <!-- 2. Harry Styles — dark bg, shows naturally -->
+        <div class="fav-item reveal" style="transition-delay:0.1s">
+          <span class="fav-tag">Listening</span>
+          <div class="fav-img-wrap">
+            <img src="download.jpeg" alt="Harry Styles — Kiss All The Time" />
+          </div>
+          <p class="fav-name">Kiss All The Time. Disco, Occasionally.</p>
+          <p class="fav-brand">Harry Styles</p>
+        </div>
+
+        <!-- 3. Salt & Stone — white bg → clipart -->
+        <div class="fav-item clipart reveal" style="transition-delay:0.15s">
+          <span class="fav-tag">Beauty</span>
+          <div class="fav-img-wrap">
+            <img src="salt-and-stone-black-rose-and-oud-deodorant.webp" alt="Salt & Stone Deodorant" />
+          </div>
+          <p class="fav-name">Black Rose &amp; Oud Déodorant</p>
+          <p class="fav-brand">Salt &amp; Stone</p>
+        </div>
+
+        <!-- 4. Something Very Bad — dark bg, shows naturally -->
+        <div class="fav-item reveal" style="transition-delay:0.2s">
+          <span class="fav-tag">Watching</span>
+          <div class="fav-img-wrap">
+            <img src="something-very-bad-is-going-to-happen.jpg" alt="Something Very Bad Is Going To Happen" />
+          </div>
+          <p class="fav-name">Something Very Bad Is Going to Happen</p>
+          <p class="fav-brand">Haley Z. Boston</p>
+        </div>
+
+        <!-- 5. Biodance — white bg → clipart -->
+        <div class="fav-item clipart reveal" style="transition-delay:0.1s">
+          <span class="fav-tag">Beauty</span>
+          <div class="fav-img-wrap">
+            <img src="51ubxqzNGIL._AC_UF1000,1000_QL80_.jpg" alt="Biodance Collagen Face Mask" />
+          </div>
+          <p class="fav-name">Bio Collagen Real Deep Mask</p>
+          <p class="fav-brand">Biodance</p>
+        </div>
+
+        <!-- 6. Hunger Games — dark bg, shows naturally -->
+        <div class="fav-item reveal" style="transition-delay:0.15s">
+          <span class="fav-tag">Reading</span>
+          <div class="fav-img-wrap">
+            <img src="61o5Q8IIq4L._AC_UF1000,1000_QL80_.jpg" alt="Sunrise on the Reaping" />
+          </div>
+          <p class="fav-name">Sunrise on the Reaping</p>
+          <p class="fav-brand">Suzanne Collins</p>
+        </div>
+
+        <!-- 7. Supergoop — white bg → clipart -->
+        <div class="fav-item clipart reveal" style="transition-delay:0.2s">
+          <span class="fav-tag">Beauty</span>
+          <div class="fav-img-wrap">
+            <img src="shopping.webp" alt="Supergoop Unseen Sunscreen" />
+          </div>
+          <p class="fav-name">Unseen Sunscreen SPF 50</p>
+          <p class="fav-brand">Supergoop!</p>
+        </div>
+
+        <!-- 8. J. Crew T-shirt — white bg → clipart -->
+        <div class="fav-item clipart reveal" style="transition-delay:0.25s">
+          <span class="fav-tag">Wearing</span>
+          <div class="fav-img-wrap">
+            <img src="BY359_WT0002.avif" alt="J. Crew Vintage Jersey Crewneck" />
+          </div>
+          <p class="fav-name">Vintage Jersey Classic-Fit Crewneck</p>
+          <p class="fav-brand">J. Crew</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
 
   <hr class="full-rule" />
 
