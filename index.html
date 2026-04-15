@@ -286,28 +286,34 @@
     .about-bio p + p { margin-top: 22px; }
     .about-bio strong { font-weight: 600; }
 
-    .about-bio .interests {
-      font-size: 15px;
-      color: #444;
-      border-left: 3px solid var(--blue);
-      padding-left: 20px;
-      margin-top: 28px;
-      line-height: 1.75;
+    /* Pull quote — decorative highlight line */
+    .about-pull {
+      border-left: 3px solid var(--red);
+      padding: 6px 0 6px 20px;
+      margin: 32px 0;
+      font-family: var(--font-serif);
+      font-size: 19px;
+      font-weight: 700;
+      font-style: italic;
+      color: var(--ink);
+      line-height: 1.4;
     }
 
     .about-stats {
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 0;
     }
 
     .stat-box {
       border: 1px solid var(--blue);
-      padding: 28px 32px;
+      border-bottom: none;
+      padding: 24px 28px;
       display: flex;
       align-items: baseline;
-      gap: 16px;
+      gap: 14px;
     }
+    .stat-box:last-of-type { border-bottom: 1px solid var(--blue); }
 
     .stat-number {
       font-family: var(--font-serif);
@@ -323,6 +329,30 @@
       letter-spacing: 0.15em;
       text-transform: uppercase;
       color: var(--ink);
+    }
+
+    /* Interests aside — right column */
+    .about-aside {
+      margin-top: 28px;
+      padding-top: 28px;
+      border-top: var(--rule);
+    }
+
+    .about-aside-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 14px;
+    }
+
+    .about-aside-text {
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 1.8;
+      color: var(--ink);
+      font-style: italic;
     }
 
     /* ── EXPERIENCE ──────────────────────────────────────────── */
@@ -862,8 +892,9 @@
       section { padding: 64px 24px; }
 
       .about-grid { grid-template-columns: 1fr; gap: 48px; }
-      .about-stats { flex-direction: row; flex-wrap: wrap; }
-      .stat-box { flex: 1 1 160px; }
+      .about-stats { flex-direction: row; flex-wrap: wrap; gap: 0; }
+      .stat-box { flex: 1 1 160px; border-bottom: 1px solid var(--blue); }
+      .about-aside { margin-top: 24px; padding-top: 24px; }
 
       .edu-grid { grid-template-columns: 1fr; gap: 40px; }
       .contact-grid { grid-template-columns: 1fr; gap: 56px; }
@@ -957,14 +988,14 @@
         <p>
           A senior at Tulane University's Freeman School of Business, studying Marketing and Management with a focus on how brands tell stories that actually land. My work has spanned <strong>experiential activations, influencer strategy, branded content, and consumer research</strong> — all oriented around one question: how do you make people genuinely connect with a product or idea?
         </p>
+        <blockquote class="about-pull">
+          "How do you make people genuinely care about a product or idea?"
+        </blockquote>
         <p>
           Last summer, I joined the <strong>Bacardí Rum Brand Team in Miami</strong>, where I built an influencer-driven 360° marketing program targeting Gen Z in casual dining environments, helped bring the brand to life at Lollapalooza and other key activations, and collaborated across creative, insights, and partnerships teams on campaigns with real stakes.
         </p>
         <p>
           I'm comfortable across tools like <strong>NielsenIQ, RStudio, Excel, and Canva</strong>, and equally at home in the content creation space — from Instagram strategy to short-form video. I move naturally between the analytical and the creative, and I hold myself to a high standard of quality in everything I put my name on.
-        </p>
-        <p class="interests">
-          Outside of work, I'm drawn to the things that quietly shape culture — finding a restaurant that shifts how you think about food, stumbling onto an album before anyone else does, watching a film that stays with you for days. I stay close to what's moving in music, fashion, food, and film, and I think that curiosity is a big part of what makes me good at this work.
         </p>
       </div>
       <div class="about-stats reveal" style="transition-delay:0.2s">
@@ -975,6 +1006,10 @@
         <div class="stat-box">
           <span class="stat-number">3</span>
           <span class="stat-label">Marketing Internships</span>
+        </div>
+        <div class="about-aside">
+          <p class="about-aside-label">Beyond the Brief</p>
+          <p class="about-aside-text">Outside of work, I'm drawn to the things that quietly shape culture — finding a restaurant that shifts how you think about food, stumbling onto an album before anyone else does, watching a film that stays with you for days. I stay close to what's moving in music, fashion, food, and film, and I think that curiosity is a big part of what makes me good at this work.</p>
         </div>
       </div>
     </div>
