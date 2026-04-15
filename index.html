@@ -553,7 +553,7 @@
     /* ── CONTACT ─────────────────────────────────────────────── */
     .contact-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1.4fr;
       gap: 80px;
       align-items: start;
     }
@@ -571,6 +571,7 @@
       display: flex;
       flex-direction: column;
       gap: 18px;
+      margin-bottom: 36px;
     }
 
     .contact-link-item {
@@ -597,22 +598,6 @@
     }
     .contact-link-value:hover { opacity: 0.7; }
 
-    .contact-cta-side {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      padding-top: 8px;
-    }
-
-    .contact-note {
-      font-size: 15px;
-      font-weight: 300;
-      color: var(--ink);
-      line-height: 1.7;
-      margin-bottom: 36px;
-      font-style: italic;
-    }
-
     .btn-primary {
       display: inline-block;
       font-size: 11px;
@@ -626,6 +611,80 @@
       align-self: flex-start;
     }
     .btn-primary:hover { background: #a01f14; }
+
+    /* Contact Form */
+    .contact-form { display: flex; flex-direction: column; gap: 24px; }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .form-group label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--blue);
+    }
+
+    .form-group input,
+    .form-group textarea {
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid var(--ink);
+      padding: 10px 0;
+      font-family: var(--font-sans);
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--ink);
+      outline: none;
+      transition: border-color 0.2s;
+      width: 100%;
+      resize: none;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: rgba(26,26,26,0.35);
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-bottom-color: var(--red);
+    }
+
+    .form-group textarea { min-height: 120px; }
+
+    .form-submit {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .btn-submit {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--cream);
+      background: var(--red);
+      border: none;
+      padding: 16px 36px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-submit:hover { background: #a01f14; }
+
+    .form-success {
+      display: none;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--blue);
+      letter-spacing: 0.05em;
+    }
 
     /* ── FAVORITES ───────────────────────────────────────────── */
     #favorites {
@@ -807,7 +866,7 @@
       .stat-box { flex: 1 1 160px; }
 
       .edu-grid { grid-template-columns: 1fr; gap: 40px; }
-      .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+      .contact-grid { grid-template-columns: 1fr; gap: 56px; }
 
       .exp-header { flex-direction: column; gap: 4px; }
       .exp-dates { align-self: flex-start; }
@@ -1173,6 +1232,8 @@
       <hr class="section-rule" />
     </div>
     <div class="contact-grid">
+
+      <!-- Left: info -->
       <div class="reveal" style="transition-delay:0.1s">
         <p class="contact-intro">Let's build something worth talking about.</p>
         <div class="contact-links">
@@ -1193,11 +1254,36 @@
             <span class="contact-link-value" style="color:var(--ink)">New Orleans, LA</span>
           </div>
         </div>
+        <a class="btn-primary" href="Kenton Banks Harrison Resume .pdf" download style="margin-top:36px">Download Resume ↓</a>
       </div>
-      <div class="contact-cta-side reveal" style="transition-delay:0.2s">
-        <p class="contact-note">"Open to opportunities in brand strategy, marketing, and partnerships."</p>
-        <a class="btn-primary" href="Kenton Banks Harrison Resume .pdf" download>Download Resume ↓</a>
+
+      <!-- Right: form -->
+      <div class="reveal" style="transition-delay:0.2s">
+        <form
+          class="contact-form"
+          id="contactForm"
+          action="https://formspree.io/f/YOUR_FORM_ID"
+          method="POST"
+        >
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your name" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="your@email.com" required />
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Say hello..." required></textarea>
+          </div>
+          <div class="form-submit">
+            <button type="submit" class="btn-submit">Send Message &rarr;</button>
+            <span class="form-success" id="formSuccess">Thanks &mdash; I&rsquo;ll be in touch soon.</span>
+          </div>
+        </form>
       </div>
+
     </div>
   </section>
 
@@ -1222,6 +1308,35 @@
     }, { threshold: 0.12 });
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Contact form — AJAX via Formspree
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+      contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const btn = contactForm.querySelector('.btn-submit');
+        btn.textContent = 'Sending…';
+        btn.disabled = true;
+        try {
+          const res = await fetch(contactForm.action, {
+            method: 'POST',
+            body: new FormData(contactForm),
+            headers: { 'Accept': 'application/json' }
+          });
+          if (res.ok) {
+            contactForm.reset();
+            document.getElementById('formSuccess').style.display = 'block';
+            btn.textContent = 'Sent ✓';
+          } else {
+            btn.textContent = 'Error — try emailing directly';
+            btn.disabled = false;
+          }
+        } catch {
+          btn.textContent = 'Error — try emailing directly';
+          btn.disabled = false;
+        }
+      });
+    }
 
     // Hamburger menu
     const hamburger = document.querySelector('.hamburger');
