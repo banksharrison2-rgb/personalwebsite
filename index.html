@@ -286,17 +286,37 @@
     .about-bio p + p { margin-top: 22px; }
     .about-bio strong { font-weight: 600; }
 
-    /* Pull quote - decorative highlight line */
-    .about-pull {
-      border-left: 3px solid var(--red);
-      padding: 6px 0 6px 20px;
-      margin: 32px 0;
-      font-family: var(--font-serif);
-      font-size: 19px;
+    /* Discipline grid */
+    .about-disciplines {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: rgba(26,26,26,0.15);
+      border: 1px solid rgba(26,26,26,0.15);
+      margin: 28px 0;
+    }
+
+    .discipline-item {
+      background: var(--cream);
+      padding: 16px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .discipline-num {
+      font-size: 9px;
       font-weight: 700;
-      font-style: italic;
+      letter-spacing: 0.22em;
+      color: var(--red);
+    }
+
+    .discipline-name {
+      font-family: var(--font-serif);
+      font-size: 15px;
+      font-weight: 700;
       color: var(--ink);
-      line-height: 1.4;
+      line-height: 1.2;
     }
 
     .about-stats {
@@ -986,11 +1006,26 @@
     <div class="about-grid">
       <div class="about-bio reveal" style="transition-delay:0.1s">
         <p>
-          A senior at Tulane University's Freeman School of Business, studying Marketing and Management with a focus on how brands tell stories that actually land. My work has spanned <strong>experiential activations, influencer strategy, branded content, and consumer research</strong> - all oriented around one question: how do you make people genuinely connect with a product or idea?
+          A senior at Tulane University's Freeman School of Business, studying Marketing and Management with a focus on how brands tell stories that actually land - and the people they're meant to reach.
         </p>
-        <blockquote class="about-pull">
-          "How do you make people genuinely care about a product or idea?"
-        </blockquote>
+        <div class="about-disciplines">
+          <div class="discipline-item">
+            <span class="discipline-num">01</span>
+            <span class="discipline-name">Experiential Activations</span>
+          </div>
+          <div class="discipline-item">
+            <span class="discipline-num">02</span>
+            <span class="discipline-name">Influencer Strategy</span>
+          </div>
+          <div class="discipline-item">
+            <span class="discipline-num">03</span>
+            <span class="discipline-name">Branded Content</span>
+          </div>
+          <div class="discipline-item">
+            <span class="discipline-num">04</span>
+            <span class="discipline-name">Consumer Research</span>
+          </div>
+        </div>
         <p>
           Last summer, I joined the <strong>Bacardí Rum Brand Team in Miami</strong>, where I built an influencer-driven 360° marketing program targeting Gen Z in casual dining environments, helped bring the brand to life at Lollapalooza and other key activations, and collaborated across creative, insights, and partnerships teams on campaigns with real stakes.
         </p>
